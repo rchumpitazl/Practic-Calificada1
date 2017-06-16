@@ -29,5 +29,10 @@
   <ItemGroup>
     <Folder Include="Views\Customer\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="NLogConfig.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

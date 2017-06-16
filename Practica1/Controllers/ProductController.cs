@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Practica1.Models;
 using Practica1.UnitOfWork;
+using Practica1.Filters;
 
 namespace Practica1.Controllers
 {
+    [ExceptionLoggerFilter]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unit;
@@ -103,6 +102,12 @@ namespace Practica1.Controllers
                 
                 return View();
             }
+        }
+
+        [Route("product/issue")]
+        public IActionResult CreateIssue()
+        {
+            throw new Exception("New error");
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Practica1.Controllers
 {
+
     public class HomeController : Controller
     {
 
@@ -32,5 +33,6 @@ namespace Practica1.Controllers
         {
             return View();
         }
+        
     }
 }

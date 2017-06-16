@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Practica1.UnitOfWork;
+using NLog.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace Practica1
 {
@@ -21,7 +23,7 @@ namespace Practica1
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
-            //env.ConfigureNLog("NLogConfig.config");
+            env.ConfigureNLog("NLogConfig.config");
 
         }
 
@@ -31,7 +33,7 @@ namespace Practica1
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IUnitOfWork>(
                 option => new PracticaUnitOfWork(Configuration.GetConnectionString("Sales"))
                 );
