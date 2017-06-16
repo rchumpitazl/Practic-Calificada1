@@ -21,7 +21,7 @@ namespace Practica1.Controllers
         public IActionResult Index()
         {
             var Customers = _unit.Customers.GetAll();
-            Customers = Customers.Take(5);
+            Customers = Customers.OrderByDescending(x=>x.CustomerID).Take(5);
             return View(Customers);
         }
 
