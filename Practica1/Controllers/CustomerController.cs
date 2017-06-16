@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Practica1.Models;
 using Practica1.UnitOfWork;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Practica1.Controllers
 {
@@ -18,7 +20,9 @@ namespace Practica1.Controllers
 
         public IActionResult Index()
         {
-            return View(_unit.Customers.GetAll());
+            var Customers = _unit.Customers.GetAll();
+            Customers = Customers.Take(5);
+            return View(Customers);
         }
 
       
@@ -37,7 +41,7 @@ namespace Practica1.Controllers
                 int CustomerID = _unit.Customers.Insert(customer);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
@@ -67,7 +71,7 @@ namespace Practica1.Controllers
                 bool actualizo = _unit.Customers.Update(customer);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }

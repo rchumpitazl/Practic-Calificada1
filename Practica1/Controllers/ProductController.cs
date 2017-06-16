@@ -37,7 +37,7 @@ namespace Practica1.Controllers
                 int ProductID = _unit.Products.Insert(product);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }

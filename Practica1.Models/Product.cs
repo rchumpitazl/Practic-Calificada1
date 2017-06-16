@@ -4,7 +4,7 @@ namespace Practica1.Models
 {
     public class Product
     {
-        [ExplicitKey]
+        [Key]
         public int ProductID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
